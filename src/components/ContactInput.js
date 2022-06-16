@@ -12,7 +12,6 @@ class ContactInput extends React.Component {
       this.onNameChangeEventHandler = this.onNameChangeEventHandler.bind(this);
       this.onTagChangeEventHandler = this.onTagChangeEventHandler.bind(this);
       this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
-
     }
 
     onNameChangeEventHandler(event) {
@@ -41,8 +40,8 @@ class ContactInput extends React.Component {
   render() {
     return (
       <form className="contact-input" onSubmit={this.onSubmitEventHandler}>
-        <input type="text" placeholder="name" value={this.state.name} onChange={this.onNameChangeEventHandler}></input>
-        <input type="text" placeholder="tag" value={this.state.tag} onChange={this.onTagChangeEventHandler}></input>
+        <input type="text" placeholder="Name.." value={this.state.name} onChange={this.onNameChangeEventHandler}></input>
+        <input type="text" placeholder="Tag.." value={this.state.tag} onChange={this.onTagChangeEventHandler}></input>
         <button type="submit">Tambah</button>
       </form>
     )
