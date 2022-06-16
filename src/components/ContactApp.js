@@ -9,19 +9,34 @@ class ContactApp extends React.Component {
       contacts: getData(),
     }
 
-    this.onDeleteHandle = this.onDeleteHandle.bind(this);
+    this.onDeleteHandler = this.onDeleteHandler.bind(this);
+    this.onAddContactHandler = this.onAddContactHandler.bind(this);
   };
   
-  onDeleteHandle (id) {
+  onDeleteHandler (id) {
     const contacts = this.state.contacts.filter(contact => contact.id !== id);
     this.setState({ contacts });
+  }
+
+  onAddContactHandler ({name, tag}) {
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        contacts: [...prevState.contacts, {
+          id: +new Date(),
+          name,
+          tag,
+          ImageUrl: 'https://randomuser.me/api/portraits/' + (Math.floor(Math.random() * 6) + 1) + '/' + (Math.floor(Math.random() * 6) + 1) + '.jpg',
+        }],
+      }
+    });
   }
 
   render() {
     return (
       <div className="contact-app">
         <h1>Daftar Kontak</h1>
-        <ContactList contacts={this.state.contacts} onDelete={this.onDeleteHandle}/>
+        <ContactList contacts={this.state.contacts} onDelete={this.onDeleteHandler}/>
       </div>
     );
   }
